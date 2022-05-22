@@ -64,7 +64,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 2 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -15 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Pickaxe:visible")
@@ -88,7 +88,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 2 ),
 "update": 0,
-"values": [ Vector2( -16, -7 ), Vector2( -14, 0 ) ]
+"values": [ Vector2( -16, -17 ), Vector2( -14, 0 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Pickaxe:rotation_degrees")
@@ -240,7 +240,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 2 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -15 ), Vector2( 0, 0 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Pickaxe:visible")
@@ -264,7 +264,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 2 ),
 "update": 0,
-"values": [ Vector2( 2, -5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 2, -15 ), Vector2( 0, 0 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Pickaxe:rotation_degrees")
@@ -383,6 +383,7 @@ tracks/6/keys = {
 frames = SubResource( 4 )
 frame = 1
 playing = true
+flip_h = true
 script = ExtResource( 2 )
 attack_sound = ExtResource( 5 )
 hurt_sound = ExtResource( 6 )
@@ -399,8 +400,6 @@ show_behind_parent = true
 position = Vector2( 3, -4 )
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( -14, 0 )
-flip_h = true
 
 [node name="SoundManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
