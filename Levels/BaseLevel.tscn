@@ -61,4 +61,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
 [connection signal="attacked" from="Player" to="." method="_on_Player_attacked"]

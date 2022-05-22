@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Fonts/TerraFuga.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Sprites/Panel.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scripts/Shop.gd" type="Script" id=5]
 [ext_resource path="res://Sprites/Shop.png" type="Texture" id=6]
 [ext_resource path="res://Theme.tres" type="Theme" id=7]
+[ext_resource path="res://Music/shop music.wav" type="AudioStream" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -52,7 +53,6 @@ frame = 2
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 position = Vector2( 153, 89 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="BlackBars" parent="." index="5"]
@@ -128,6 +128,9 @@ margin_bottom = 6.0
 size_flags_horizontal = 3
 theme = ExtResource( 7 )
 text = "NO"
+
+[node name="BackgroundMusic" parent="." index="10"]
+stream = ExtResource( 8 )
 
 [connection signal="pressed" from="Shop/CenterContainer/VBoxContainer/HBoxContainer/YesBtn" to="Shop" method="_on_YesBtn_pressed"]
 [connection signal="pressed" from="Shop/CenterContainer/VBoxContainer/HBoxContainer/NoBtn" to="Shop" method="_on_NoBtn_pressed"]

@@ -30,10 +30,6 @@ config/name="Wild45"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
-[audio]
-
-default_bus_layout="res://AudioBusLayout.tres"
-
 [autoload]
 
 WindowManager="*res://Scripts/WindowManager.gd"
