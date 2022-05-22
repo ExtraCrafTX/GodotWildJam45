@@ -47,8 +47,7 @@ visible = false
 
 [node name="Player" parent="." index="2"]
 position = Vector2( 66, 89 )
-frame = 1
-flip_h = true
+frame = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 position = Vector2( 153, 89 )

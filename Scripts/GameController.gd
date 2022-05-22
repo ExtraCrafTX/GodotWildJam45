@@ -16,6 +16,7 @@ var playerHP: int = playerDefHP
 
 func damagePlayer() -> void:
 	playerHP -=1
+	
 	emit_signal("heart_removed",1)
 	print("Player HP:", playerHP)
 	if playerHP <= 0:

@@ -68,7 +68,7 @@ func _physics_process(delta):
 	if level_duration <0:
 		GameController.currentLevel +=1
 		if get_tree().change_scene("res://Levels/Level"+ str(GameController.currentLevel)+".tscn") != OK:
-			if get_tree().change_scene("res://Main.tscn") !=OK:
+			if get_tree().change_scene("res://Levels/Win.tscn") !=OK:
 				get_tree().quit(1)
 		
 		
