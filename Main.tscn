@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Entities/EnemyTrack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Bat.tscn" type="PackedScene" id=2]
@@ -8,6 +8,11 @@
 [ext_resource path="res://Sprites/Elevator.png" type="Texture" id=6]
 [ext_resource path="res://Entities/Skeleton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=8]
+[ext_resource path="res://Entities/SoulsPanel.tscn" type="PackedScene" id=9]
+
+[sub_resource type="StreamTexture" id=1]
+resource_local_to_scene = true
+load_path = "res://.import/Panel.png-ff2e49d027568e6ca28a5e704356aaeb.stex"
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 8 )
@@ -23,6 +28,7 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 76 )
+frame = 2
 
 [node name="Tracks" type="Node2D" parent="."]
 
@@ -63,5 +69,8 @@ modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 96, 101 )
 scale = Vector2( 192, 16 )
 texture = ExtResource( 3 )
+
+[node name="SoulsPanel" parent="." instance=ExtResource( 9 )]
+texture = SubResource( 1 )
 
 [connection signal="attacked" from="Player" to="." method="_on_Player_attacked"]

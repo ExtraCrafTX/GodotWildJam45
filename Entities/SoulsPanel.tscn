@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/TerraFuga.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/SoulsPanel.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Panel.png" type="Texture" id=3]
+
+[node name="SoulsPanel" type="NinePatchRect"]
+margin_left = 4.0
+margin_top = 29.0
+margin_right = 29.0
+margin_bottom = 38.0
+texture = ExtResource( 3 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SoulsLabel" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 24.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 1 )
+text = "1234"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
