@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Entities/EnemyTrack.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entities/Bat.tscn" type="PackedScene" id=2]
@@ -10,10 +10,13 @@
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=8]
 [ext_resource path="res://Entities/SoulsPanel.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Popups/PausePopup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/HPContainer.gd" type="Script" id=12]
 
 [sub_resource type="StreamTexture" id=1]
 resource_local_to_scene = true
 load_path = "res://.import/Panel.png-ff2e49d027568e6ca28a5e704356aaeb.stex"
+
+[sub_resource type="StyleBoxEmpty" id=2]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 8 )
@@ -29,7 +32,7 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 76 )
-frame = 2
+frame = 0
 
 [node name="Tracks" type="Node2D" parent="."]
 
@@ -72,6 +75,15 @@ centered = false
 texture = SubResource( 1 )
 
 [node name="pause_popup" parent="." instance=ExtResource( 10 )]
-visible = false
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 119.0
+margin_top = 15.0
+margin_right = 192.0
+margin_bottom = 25.0
+custom_styles/bg = SubResource( 2 )
+max_columns = 6
+fixed_column_width = 6
+script = ExtResource( 12 )
 
 [connection signal="attacked" from="Player" to="." method="_on_Player_attacked"]
