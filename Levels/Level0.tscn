@@ -16,6 +16,9 @@ time_between_spawns = 2.0
 position = Vector2( 96, 59 )
 texture = ExtResource( 1 )
 
+[node name="Player" parent="." index="2"]
+frame = 0
+
 [node name="SkellyLeft" parent="Tracks" index="0" instance=ExtResource( 2 )]
 position = Vector2( -20, 77 )
 type = 0

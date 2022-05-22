@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Fonts/TerraFuga.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/Panel.png" type="Texture" id=2]
+[ext_resource path="res://Levels/BaseLevel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Devil.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Shop.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/Shop.png" type="Texture" id=6]
+[ext_resource path="res://Theme.tres" type="Theme" id=7]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 15, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 15, 0, 15, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 30, 0, 15, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 45, 0, 15, 16 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="StreamTexture" id=6]
+resource_local_to_scene = true
+load_path = "res://.import/Panel.png-ff2e49d027568e6ca28a5e704356aaeb.stex"
+
+[node name="Level" instance=ExtResource( 3 )]
+
+[node name="Shop2" type="Sprite" parent="." index="0"]
+position = Vector2( 96, 54 )
+texture = ExtResource( 6 )
+
+[node name="Elevator" parent="." index="1"]
+visible = false
+
+[node name="Player" parent="." index="2"]
+position = Vector2( 66, 89 )
+frame = 1
+flip_h = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+position = Vector2( 153, 89 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="BlackBars" parent="." index="5"]
+visible = false
+
+[node name="SoulsPanel" parent="." index="6"]
+margin_top = 5.0
+margin_bottom = 14.0
+texture = SubResource( 6 )
+
+[node name="Shop" type="Control" parent="." index="9"]
+margin_right = 192.0
+margin_bottom = 108.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Shop" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shop/CenterContainer" index="0"]
+margin_left = 48.0
+margin_top = 41.0
+margin_right = 143.0
+margin_bottom = 67.0
+
+[node name="DialogPanel" type="NinePatchRect" parent="Shop/CenterContainer/VBoxContainer" index="0"]
+margin_right = 95.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 95, 16 )
+texture = ExtResource( 2 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Shop/CenterContainer/VBoxContainer/DialogPanel" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 95.0
+margin_bottom = 16.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Buy 3 extra hearts for only 100 souls?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shop/CenterContainer/VBoxContainer" index="1"]
+margin_top = 20.0
+margin_right = 95.0
+margin_bottom = 26.0
+
+[node name="YesBtn" type="Button" parent="Shop/CenterContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 45.0
+margin_bottom = 6.0
+size_flags_horizontal = 3
+theme = ExtResource( 7 )
+text = "YES"
+
+[node name="NoBtn" type="Button" parent="Shop/CenterContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 49.0
+margin_right = 95.0
+margin_bottom = 6.0
+size_flags_horizontal = 3
+theme = ExtResource( 7 )
+text = "NO"
+
+[connection signal="pressed" from="Shop/CenterContainer/VBoxContainer/HBoxContainer/YesBtn" to="Shop" method="_on_YesBtn_pressed"]
+[connection signal="pressed" from="Shop/CenterContainer/VBoxContainer/HBoxContainer/NoBtn" to="Shop" method="_on_NoBtn_pressed"]

@@ -27,6 +27,8 @@ func _ready() -> void:
 		tracks[input].append(track)
 
 func _process(delta: float) -> void:
+	if track_container.get_children().size() == 0:
+		return
 	time_since_last_spawn += delta
 	if time_since_last_spawn > time_between_spawns:
 		time_since_last_spawn -= time_between_spawns
@@ -37,6 +39,9 @@ func _process(delta: float) -> void:
 		togglePauseGame()
 
 func _on_Player_attacked(input: String, player: Player) -> void:
+	if not tracks.has(input):
+		player.miss()
+		return
 	var input_tracks = tracks[input]
 	var hit = false
 	for track in input_tracks:
