@@ -1,6 +1,7 @@
 extends Node2D
 
 export(float) var time_between_spawns: float = 1
+export(float) var level_duration :float = 12
 
 export(NodePath) var track_container_path
 onready var track_container = get_node(track_container_path)
@@ -57,3 +58,14 @@ func togglePauseGame() -> void:
 	else:
 		get_tree().paused = true
 		$pause_popup.show()
+		
+func _physics_process(delta):
+	level_duration -= 1 * delta
+	print("time to win: " ,level_duration)
+	if level_duration <0:
+		GameController.currentLevel +=1
+		if get_tree().change_scene("res://Levels/Level"+ str(GameController.currentLevel)+".tscn") != OK:
+			if get_tree().change_scene("res://Main.tscn") !=OK:
+				get_tree().quit(1)
+		
+		
