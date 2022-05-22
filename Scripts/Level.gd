@@ -34,7 +34,12 @@ func _process(delta: float) -> void:
 		var track = all_tracks[randi() % all_tracks.size()]
 		track.spawn()
 
-func _on_Player_attacked(input: String) -> void:
+func _on_Player_attacked(input: String, player: Player) -> void:
 	var input_tracks = tracks[input]
+	var hit = false
 	for track in input_tracks:
-		track.attacked()
+		hit = track.attacked()
+		if hit:
+			break
+	if not hit:
+		player.miss()
