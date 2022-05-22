@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 		stunned = false
 		modulate = Color.white
 
+
 func miss() -> void:
 	heat += 1
 	if heat >= max_heat:

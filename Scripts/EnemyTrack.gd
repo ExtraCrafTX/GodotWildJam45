@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 			enemy.animation = "in_range"
 			enemy.frame = frame
 		if times[i] > time + tolerance:
+			GameController.damagePlayer()
 			enemies.remove(i)
 			times.remove(i)
 			enemy.queue_free()

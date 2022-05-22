@@ -33,6 +33,8 @@ func _process(delta: float) -> void:
 		var all_tracks = track_container.get_children()
 		var track = all_tracks[randi() % all_tracks.size()]
 		track.spawn()
+	if Input.is_key_pressed(KEY_ESCAPE):
+		togglePauseGame()
 
 func _on_Player_attacked(input: String, player: Player) -> void:
 	var input_tracks = tracks[input]
@@ -46,3 +48,12 @@ func _on_Player_attacked(input: String, player: Player) -> void:
 	else:
 		GameController.souls += 1
 		print(GameController.souls)
+
+func togglePauseGame() -> void:
+	print("the game is ", get_tree().paused)
+	if get_tree().paused:
+		$pause_popup.hide()
+		get_tree().paused = false
+	else:
+		get_tree().paused = true
+		$pause_popup.show()
