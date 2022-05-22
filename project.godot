@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 WindowManager="*res://Scripts/WindowManager.gd"
+GameController="*res://Scripts/GameController.gd"
 
 [display]
 

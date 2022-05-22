@@ -43,3 +43,6 @@ func _on_Player_attacked(input: String, player: Player) -> void:
 			break
 	if not hit:
 		player.miss()
+	else:
+		GameController.souls += 1
+		print(GameController.souls)
