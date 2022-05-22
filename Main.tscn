@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Entities/EnemyTrack.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/Bat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Pixel.png" type="Texture" id=3]
+[ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Level 1.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Elevator.png" type="Texture" id=6]
+[ext_resource path="res://Entities/Skeleton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=8]
+
+[node name="Root" type="Node2D"]
+script = ExtResource( 8 )
+track_container_path = NodePath("Tracks")
+
+[node name="Level1" type="Sprite" parent="."]
+position = Vector2( 96, 59 )
+texture = ExtResource( 5 )
+
+[node name="Elevator" type="Sprite" parent="."]
+position = Vector2( 96, 58 )
+texture = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 96, 76 )
+frame = 1
+
+[node name="Tracks" type="Node2D" parent="."]
+
+[node name="BatLeft" parent="Tracks" instance=ExtResource( 1 )]
+position = Vector2( -20, 50 )
+enemy_type = ExtResource( 2 )
+
+[node name="BatRight" parent="Tracks" instance=ExtResource( 1 )]
+position = Vector2( 210, 50 )
+direction = -1
+enemy_type = ExtResource( 2 )
+
+[node name="SkellyLeft" parent="Tracks" instance=ExtResource( 1 )]
+position = Vector2( -20, 77 )
+type = 0
+enemy_type = ExtResource( 7 )
+
+[node name="SkellyRight" parent="Tracks" instance=ExtResource( 1 )]
+position = Vector2( 210, 77 )
+direction = -1
+type = 0
+enemy_type = ExtResource( 7 )
+
+[node name="BlackBars" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="BlackBars"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 96, 12 )
+scale = Vector2( 192, 26 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="BlackBars"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 96, 101 )
+scale = Vector2( 192, 16 )
+texture = ExtResource( 3 )
+
+[connection signal="attacked" from="Player" to="." method="_on_Player_attacked"]
