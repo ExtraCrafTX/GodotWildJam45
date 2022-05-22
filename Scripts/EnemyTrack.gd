@@ -14,12 +14,12 @@ export(PackedScene) var enemy_type: PackedScene
 var enemies = []
 var times = []
 
-func spawn() -> void:
+func spawn(time: float) -> void:
 	var new_enemy: AnimatedSprite = enemy_type.instance()
 	new_enemy.flip_h = direction == Direction.RIGHT
 	add_child(new_enemy)
 	enemies.append(new_enemy)
-	times.append(0)
+	times.append(time)
 
 func attacked() -> bool:
 	if enemies.size() == 0:

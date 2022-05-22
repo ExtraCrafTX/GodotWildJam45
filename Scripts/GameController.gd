@@ -8,7 +8,6 @@ func set_souls(new_souls: int) -> void:
 	souls = new_souls
 	emit_signal("souls_updated", souls)
 
-
 var playerHP: int = 10
 
 func damagePlayer() -> void:
@@ -16,11 +15,3 @@ func damagePlayer() -> void:
 	print("Player HP:", playerHP)
 	if playerHP <= 0:
 		print("Player is ded")
-		
-		
-
-	
-
-
-
-

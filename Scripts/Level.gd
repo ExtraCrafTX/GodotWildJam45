@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		time_since_last_spawn -= time_between_spawns
 		var all_tracks = track_container.get_children()
 		var track = all_tracks[randi() % all_tracks.size()]
-		track.spawn()
+		track.spawn(time_since_last_spawn)
 	if Input.is_key_pressed(KEY_ESCAPE):
 		togglePauseGame()
 

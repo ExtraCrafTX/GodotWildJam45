@@ -9,7 +9,7 @@
 [ext_resource path="res://Entities/Skeleton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/Level.gd" type="Script" id=8]
 [ext_resource path="res://Entities/SoulsPanel.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/pause_popup.gd" type="Script" id=10]
+[ext_resource path="res://Popups/PausePopup.tscn" type="PackedScene" id=10]
 
 [sub_resource type="StreamTexture" id=1]
 resource_local_to_scene = true
@@ -29,6 +29,7 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96, 76 )
+frame = 2
 
 [node name="Tracks" type="Node2D" parent="."]
 
@@ -53,46 +54,24 @@ type = 0
 enemy_type = ExtResource( 7 )
 
 [node name="BlackBars" type="Node2D" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
 
 [node name="Sprite" type="Sprite" parent="BlackBars"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 96, 12 )
-scale = Vector2( 192, 26 )
+scale = Vector2( 192, 25 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="Sprite2" type="Sprite" parent="BlackBars"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 96, 101 )
-scale = Vector2( 192, 16 )
+position = Vector2( 0, 93 )
+scale = Vector2( 192, 15 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="SoulsPanel" parent="." instance=ExtResource( 9 )]
 texture = SubResource( 1 )
 
-[node name="pause_popup" type="Popup" parent="."]
-pause_mode = 2
-visible = true
-margin_left = 65.0
-margin_top = 20.0
-margin_right = 127.0
-margin_bottom = 80.0
-script = ExtResource( 10 )
-level_path = NodePath("..")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="pause_popup"]
-margin_left = 7.0
-margin_top = 13.0
-margin_right = 73.0
-margin_bottom = 47.0
-tab_size = 2
-text = "Paused
-"
-__meta__ = {
-"_editor_description_": "PAUSED"
-}
+[node name="pause_popup" parent="." instance=ExtResource( 10 )]
+visible = false
 
 [connection signal="attacked" from="Player" to="." method="_on_Player_attacked"]
