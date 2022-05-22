@@ -1,8 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Sprites/CharacterSide.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Pickaxe.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/SoundManager.gd" type="Script" id=4]
+[ext_resource path="res://SFX/hitHurt (1).wav" type="AudioStream" id=5]
+[ext_resource path="res://SFX/hitHurt (3).wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -380,8 +383,9 @@ tracks/6/keys = {
 frames = SubResource( 4 )
 frame = 1
 playing = true
-flip_h = true
 script = ExtResource( 2 )
+attack_sound = ExtResource( 5 )
+hurt_sound = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/LeftAir = SubResource( 9 )
@@ -395,4 +399,8 @@ show_behind_parent = true
 position = Vector2( 3, -4 )
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( 1, 0 )
+offset = Vector2( -14, 0 )
+flip_h = true
+
+[node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource( 4 )

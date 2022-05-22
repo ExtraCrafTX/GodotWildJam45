@@ -12,6 +12,7 @@ var time_since_last_spawn: float = 0
 func _ready() -> void:
 	var all_tracks = track_container.get_children()
 	for track in all_tracks:
+		track.connect("enemy_reached", $Player, "damaged")
 		var direction = track.direction
 		if direction == 1:
 			direction = "Left"
@@ -36,8 +37,6 @@ func _process(delta: float) -> void:
 		var all_tracks = track_container.get_children()
 		var track = all_tracks[randi() % all_tracks.size()]
 		track.spawn(time_since_last_spawn)
-	if Input.is_key_pressed(KEY_ESCAPE):
-		togglePauseGame()
 
 func _on_Player_attacked(input: String, player: Player) -> void:
 	if not tracks.has(input):
@@ -66,7 +65,6 @@ func togglePauseGame() -> void:
 		
 func _physics_process(delta):
 	level_duration -= 1 * delta
-	print("time to win: " ,level_duration)
 	if level_duration <0:
 		GameController.currentLevel +=1
 		if get_tree().change_scene("res://Levels/Level"+ str(GameController.currentLevel)+".tscn") != OK:

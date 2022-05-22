@@ -3,6 +3,8 @@ extends Node2D
 enum Direction {RIGHT = -1, LEFT = 1}
 enum Type {GROUND = 0, AIR = 1}
 
+signal enemy_reached
+
 export(Direction) var direction = Direction.LEFT
 export(Type) var type = Type.AIR
 export(float) var time: float = 4
@@ -42,6 +44,7 @@ func _process(delta: float) -> void:
 			enemy.frame = frame
 		if times[i] > time + tolerance:
 			GameController.damagePlayer()
+			emit_signal("enemy_reached")
 			enemies.remove(i)
 			times.remove(i)
 			enemy.queue_free()
